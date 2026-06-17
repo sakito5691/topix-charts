@@ -6,83 +6,55 @@
     <title>TOPIX 業種別相対チャートボード</title>
     <style>
         body {
-            background-color: #121212; /* 世界の株価風の黒背景 */
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #121212; /* 背景を黒にして視認性をアップ */
             margin: 0;
-            padding: 10px;
-        }
-        h1 {
-            font-size: 16px;
-            text-align: center;
-            margin: 10px 0;
-            color: #2962ff;
+            padding: 5px;
         }
         .grid-container {
             display: grid;
-            /* スマホで横並び2列、PCなどの大画面では自動で3〜4列に広がる設定 */
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-            gap: 8px;
+            grid-template-columns: repeat(2, 1fr); /* スマホ画面で綺麗に2列に並べる */
+            gap: 5px;
         }
         .chart-card {
-            background-color: #1c1c1e;
-            border-radius: 8px;
+            background-color: #ffffff;
+            border-radius: 4px;
             overflow: hidden;
-            border: 1px solid #2c2c2e;
-            height: 290px; /* 株マップのチャートが綺麗に収まる高さ */
-            padding: 5px;
-            box-sizing: border-box;
+            display: block;
         }
-        .chart-label {
-            font-size: 12px;
-            font-weight: bold;
-            padding: 4px 5px;
-            color: #00ffcc;
-            background: #2a2e39;
-            border-radius: 4px;
-            margin-bottom: 5px;
-            text-align: center;
-        }
+        /* TOPIX単体（最上部）だけ1列ぶち抜きで大きく表示 */
         .base-market {
-            grid-column: 1 / -1; /* 最上部のTOPIX本体だけ横幅いっぱいに表示 */
-            height: 320px;
-            border: 1px solid #2962ff;
+            grid-column: span 2;
         }
-        .base-market .chart-label { color: #2962ff; }
-        iframe {
+        /* チャート画像そのものを枠内にピッタリ収める設定 */
+        img {
             width: 100%;
-            height: calc(100% - 28px);
-            border: none;
-            background-color: #ffffff; /* 株マップのチャート背景（白）に合わせる設定 */
-            border-radius: 4px;
+            height: auto;
+            display: block;
         }
     </style>
 </head>
 <body>
 
-    <h1>TOPIX 業種別相対チャート</h1>
-
     <div class="grid-container">
         <!-- 【基準】TOPIX単体（最上部） -->
         <div class="chart-card base-market">
-            <div class="chart-label">📈 TOPIX (日足基準)</div>
-            <iframe src="https://kabumap.com"></iframe>
+            <img src="https://kabumap.com">
         </div>
         
-        <!-- 13セクターの相対（割り算）チャート一覧（株マップのシステムをページ内に直載せ） -->
-        <div class="chart-card"><div class="chart-label">銀行</div><iframe src="https://kabumap.com"></iframe></div>
-        <div class="chart-card"><div class="chart-label">証券</div><iframe src="https://kabumap.com"></iframe></div>
-        <div class="chart-card"><div class="chart-label">保険</div><iframe src="https://kabumap.com"></iframe></div>
-        <div class="chart-card"><div class="chart-label">その他金融</div><iframe src="https://kabumap.com"></iframe></div>
-        <div class="chart-card"><div class="chart-label">繊維</div><iframe src="https://kabumap.com"></iframe></div>
-        <div class="chart-card"><div class="chart-label">パルプ紙</div><iframe src="https://kabumap.com"></iframe></div>
-        <div class="chart-card"><div class="chart-label">ガラス土石</div><iframe src="https://kabumap.com"></iframe></div>
-        <div class="chart-card"><div class="chart-label">鉄鋼</div><iframe src="https://kabumap.com"></iframe></div>
-        <div class="chart-card"><div class="chart-label">非鉄金属</div><iframe src="https://kabumap.com"></iframe></div>
-        <div class="chart-card"><div class="chart-label">金属製品</div><iframe src="https://kabumap.com"></iframe></div>
-        <div class="chart-card"><div class="chart-label">鉱業</div><iframe src="https://kabumap.com"></iframe></div>
-        <div class="chart-card"><div class="chart-label">石油石炭</div><iframe src="https://kabumap.com"></iframe></div>
-        <div class="chart-card"><div class="chart-label">卸売</div><iframe src="https://kabumap.com"></iframe></div>
+        <!-- 13セクターの相対チャート画像を直接1面表示（TOPIXが0%基準の水平線になります） -->
+        <div class="chart-card"><img src="https://kabumap.com"></div>
+        <div class="chart-card"><img src="https://kabumap.com"></div>
+        <div class="chart-card"><img src="https://kabumap.com"></div>
+        <div class="chart-card"><img src="https://kabumap.com"></div>
+        <div class="chart-card"><img src="https://kabumap.com"></div>
+        <div class="chart-card"><img src="https://kabumap.com"></div>
+        <div class="chart-card"><img src="https://kabumap.com"></div>
+        <div class="chart-card"><img src="https://kabumap.com"></div>
+        <div class="chart-card"><img src="https://kabumap.com"></div>
+        <div class="chart-card"><img src="https://kabumap.com"></div>
+        <div class="chart-card"><img src="https://kabumap.com"></div>
+        <div class="chart-card"><img src="https://kabumap.com"></div>
+        <div class="chart-card"><img src="https://kabumap.com"></div>
     </div>
 
 </body>

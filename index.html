@@ -3,42 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOPIX 業種別相対チャートボード</title>
+    <title>TOPIX 相対業種別ランチャー</title>
     <style>
         body {
-            background-color: #121212; /* 世界の株価風の黒背景 */
+            background-color: #121212;
             color: #ffffff;
             font-family: -apple-system, BlinkMacSystemFont, sans-serif;
             margin: 0;
             padding: 10px;
         }
         h1 {
-            font-size: 18px;
+            font-size: 16px;
             text-align: center;
             margin: 10px 0;
             color: #2962ff;
         }
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* スマホで綺麗に並ぶ2列構成 */
+            grid-template-columns: repeat(2, 1fr);
             gap: 8px;
-            margin-top: 10px;
         }
         .chart-box {
             background-color: #1c1c1e;
             border: 1px solid #2c2c2e;
             border-radius: 8px;
-            padding: 15px 5px;
+            padding: 12px 5px;
             text-align: center;
             text-decoration: none;
             color: #fff;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            min-height: 60px;
+            min-height: 75px;
             box-sizing: border-box;
         }
-        /* タップした時に一瞬色が変わるスマホ用設定 */
         .chart-box:active {
             background-color: #3a3a3c;
         }
@@ -49,98 +47,177 @@
         .sub-title {
             font-size: 10px;
             color: #8e8e93;
-            margin-top: 4px;
+            margin-top: 3px;
         }
-        /* 基準となるTOPIXだけ最上部に大きく配置 */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 6px;
+        }
+        .mini-btn {
+            font-size: 9px;
+            padding: 2px 6px;
+            background-color: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 4px;
+            color: #aaa;
+            text-decoration: none;
+        }
+        .mini-btn:html { color: #00ffcc; border-color: #00ffcc; }
         .base-market {
             grid-column: span 2;
             background-color: #1c2030;
             border: 1px solid #2962ff;
-            min-height: 70px;
         }
-        .base-market .chart-title {
-            color: #2962ff;
-            font-size: 15px;
-        }
+        .base-market .chart-title { color: #2962ff; }
     </style>
 </head>
 <body>
 
-    <h1>TOPIX 業種別相対チャート</h1>
+    <h1>TOPIX 業種別相対チャートボード</h1>
 
     <div class="grid-container">
 
-        <!-- 【基準】TOPIX単体のチャート（最上部に大きく表示） -->
-        <a href="https://tradingview.com" class="chart-box base-market" target="_blank">
+        <!-- 基準：TOPIX -->
+        <div class="chart-box base-market">
             <div class="chart-title">📈 TOPIX (日足基準)</div>
             <div class="sub-title">TSE:1305</div>
-        </a>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">TradingView</a>
+                <a class="mini-btn" href="https://yahoo.co.uk" target="_blank">Yahoo!</a>
+            </div>
+        </div>
 
-        <!-- 各セクターの割り算チャート（タップで公式の動く相対チャートへジャンプ） -->
-        <a href="https://tradingview.com" class="chart-box" target="_blank">
+        <!-- 銀行 -->
+        <div class="chart-box">
             <div class="chart-title">銀行</div>
             <div class="sub-title">1615 / TOPIX</div>
-        </a>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">TradingView</a>
+                <a class="mini-btn" href="https://yahoo.co.uk" target="_blank">Yahoo!</a>
+            </div>
+        </div>
 
-        <a href="https://tradingview.com" class="chart-box" target="_blank">
+        <!-- 証券 -->
+        <div class="chart-box">
             <div class="chart-title">証券</div>
             <div class="sub-title">1617 / TOPIX</div>
-        </a>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">TradingView</a>
+                <a class="mini-btn" href="https://yahoo.co.uk" target="_blank">Yahoo!</a>
+            </div>
+        </div>
 
-        <a href="https://tradingview.com" class="chart-box" target="_blank">
+        <!-- 保険 -->
+        <div class="chart-box">
             <div class="chart-title">保険</div>
             <div class="sub-title">1618 / TOPIX</div>
-        </a>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">TradingView</a>
+                <a class="mini-btn" href="https://yahoo.co.uk" target="_blank">Yahoo!</a>
+            </div>
+        </div>
 
-        <a href="https://tradingview.com" class="chart-box" target="_blank">
+        <!-- その他金融 -->
+        <div class="chart-box">
             <div class="chart-title">その他金融</div>
             <div class="sub-title">1619 / TOPIX</div>
-        </a>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">TradingView</a>
+                <a class="mini-btn" href="https://yahoo.co.uk" target="_blank">Yahoo!</a>
+            </div>
+        </div>
 
-        <a href="https://tradingview.com" class="chart-box" target="_blank">
+        <!-- 繊維 -->
+        <div class="chart-box">
             <div class="chart-title">繊維</div>
             <div class="sub-title">1621 / TOPIX</div>
-        </a>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">TradingView</a>
+                <a class="mini-btn" href="https://yahoo.co.uk" target="_blank">Yahoo!</a>
+            </div>
+        </div>
 
-        <a href="https://tradingview.com" class="chart-box" target="_blank">
+        <!-- パルプ紙 -->
+        <div class="chart-box">
             <div class="chart-title">パルプ紙</div>
             <div class="sub-title">1622 / TOPIX</div>
-        </a>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">TradingView</a>
+                <a class="mini-btn" href="https://yahoo.co.uk" target="_blank">Yahoo!</a>
+            </div>
+        </div>
 
-        <a href="https://tradingview.com" class="chart-box" target="_blank">
+        <!-- ガラス土石 -->
+        <div class="chart-box">
             <div class="chart-title">ガラス土石</div>
             <div class="sub-title">1624 / TOPIX</div>
-        </a>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">TradingView</a>
+                <a class="mini-btn" href="https://yahoo.co.uk" target="_blank">Yahoo!</a>
+            </div>
+        </div>
 
-        <a href="https://tradingview.com" class="chart-box" target="_blank">
+        <!-- 鉄鋼 -->
+        <div class="chart-box">
             <div class="chart-title">鉄鋼</div>
             <div class="sub-title">1626 / TOPIX</div>
-        </a>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">TradingView</a>
+                <a class="mini-btn" href="https://yahoo.co.uk" target="_blank">Yahoo!</a>
+            </div>
+        </div>
 
-        <a href="https://tradingview.com" class="chart-box" target="_blank">
+        <!-- 非鉄金属 -->
+        <div class="chart-box">
             <div class="chart-title">非鉄金属</div>
             <div class="sub-title">1627 / TOPIX</div>
-        </a>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">TradingView</a>
+                <a class="mini-btn" href="https://yahoo.co.uk" target="_blank">Yahoo!</a>
+            </div>
+        </div>
 
-        <a href="https://tradingview.com" class="chart-box" target="_blank">
+        <!-- 金属製品 -->
+        <div class="chart-box">
             <div class="chart-title">金属製品</div>
             <div class="sub-title">1628 / TOPIX</div>
-        </a>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">TradingView</a>
+                <a class="mini-btn" href="https://yahoo.co.uk" target="_blank">Yahoo!</a>
+            </div>
+        </div>
 
-        <a href="https://tradingview.com" class="chart-box" target="_blank">
+        <!-- 鉱業 -->
+        <div class="chart-box">
             <div class="chart-title">鉱業</div>
             <div class="sub-title">1611 / TOPIX</div>
-        </a>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">TradingView</a>
+                <a class="mini-btn" href="https://yahoo.co.uk" target="_blank">Yahoo!</a>
+            </div>
+        </div>
 
-        <a href="https://tradingview.com" class="chart-box" target="_blank">
+        <!-- 石油石炭 -->
+        <div class="chart-box">
             <div class="chart-title">石油石炭</div>
             <div class="sub-title">1612 / TOPIX</div>
-        </a>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">TradingView</a>
+                <a class="mini-btn" href="https://yahoo.co.uk" target="_blank">Yahoo!</a>
+            </div>
+        </div>
 
-        <a href="https://tradingview.com" class="chart-box" target="_blank">
+        <!-- 卸売 -->
+        <div class="chart-box">
             <div class="chart-title">卸売</div>
             <div class="sub-title">1629 / TOPIX</div>
-        </a>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">TradingView</a>
+                <a class="mini-btn" href="https://yahoo.co.uk" target="_blank">Yahoo!</a>
+            </div>
+        </div>
 
     </div>
 

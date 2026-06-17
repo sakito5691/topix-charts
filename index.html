@@ -6,7 +6,7 @@
     <title>TOPIX 業種別相対チャートボード</title>
     <style>
         body {
-            background-color: #121212;
+            background-color: #131722; /* TradingViewの標準ダーク背景色 */
             color: #ffffff;
             font-family: -apple-system, BlinkMacSystemFont, sans-serif;
             margin: 0;
@@ -20,192 +20,117 @@
         }
         .grid-container {
             display: grid;
-            /* スマホで綺麗に並ぶ2列構成 */
-            grid-template-columns: repeat(2, 1fr);
+            /* スマホで横並び2列、PCなどの大画面では自動で3〜4列に広がる設定 */
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
             gap: 8px;
         }
-        .chart-box {
-            background-color: #1c1c1e;
-            border: 1px solid #2c2c2e;
-            border-radius: 8px;
-            padding: 12px 5px;
-            text-align: center;
-            text-decoration: none;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            min-height: 75px;
+        .chart-card {
+            background-color: #1c2030;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #2a2e39;
+            height: 220px; /* 各カードの縦幅 */
+            padding: 5px;
             box-sizing: border-box;
         }
-        .chart-box:active {
-            background-color: #3a3a3c;
-        }
-        .chart-title {
+        .chart-label {
+            font-size: 12px;
             font-weight: bold;
-            font-size: 14px;
-        }
-        .sub-title {
-            font-size: 10px;
-            color: #8e8e93;
-            margin-top: 3px;
-        }
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            gap: 5px;
-            margin-top: 6px;
-        }
-        .mini-btn {
-            font-size: 10px;
-            padding: 3px 8px;
-            background-color: #2a2a2a;
-            border: 1px solid #444;
-            border-radius: 4px;
-            color: #00ffcc; /* 押しやすいように緑色にしました */
-            text-decoration: none;
-            font-weight: bold;
+            padding: 3px 5px;
+            color: #00ffcc;
+            background: #2a2e39;
+            border-radius: 3px;
+            margin-bottom: 5px;
+            text-align: center;
         }
         .base-market {
-            grid-column: span 2;
-            background-color: #1c2030;
+            grid-column: 1 / -1; /* 最上部のTOPIX本体だけ横幅いっぱいに表示 */
+            height: 260px;
             border: 1px solid #2962ff;
         }
-        .base-market .chart-title { color: #2962ff; }
+        iframe {
+            width: 100%;
+            height: calc(100% - 25px); /* タイトル下の残り幅いっぱいにチャート画像を描画 */
+            border: none;
+        }
     </style>
 </head>
 <body>
 
-    <h1>TOPIX 業種別相対チャートボード</h1>
+    <h1>TOPIX 業種別相対チャート</h1>
 
     <div class="grid-container">
-
-        <!-- 1. 基準：TOPIX -->
-        <div class="chart-box base-market">
-            <div class="chart-title">📈 TOPIX (日足基準)</div>
-            <div class="sub-title">TSE:1305</div>
-            <div class="btn-group">
-                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャートを開く</a>
-            </div>
+        <!-- 【基準】TOPIX単体（最上部） -->
+        <div class="chart-card base-market">
+            <div class="chart-label">📈 TOPIX (日足基準)</div>
+            <iframe src="https://tradingview.com"></iframe>
+        </div>
+        
+        <!-- 13セクターの相対（割り算）チャート一覧。すべて画像形式で埋め込み -->
+        <div class="chart-card">
+            <div class="chart-label">銀行</div>
+            <iframe src="https://tradingview.com"></iframe>
         </div>
 
-        <!-- 2. 銀行 -->
-        <div class="chart-box">
-            <div class="chart-title">銀行</div>
-            <div class="sub-title">1615 / TOPIX</div>
-            <div class="btn-group">
-                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
-            </div>
+        <div class="chart-card">
+            <div class="chart-label">証券</div>
+            <iframe src="https://tradingview.com"></iframe>
         </div>
 
-        <!-- 3. 証券 -->
-        <div class="chart-box">
-            <div class="chart-title">証券</div>
-            <div class="sub-title">1617 / TOPIX</div>
-            <div class="btn-group">
-                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
-            </div>
+        <div class="chart-card">
+            <div class="chart-label">保険</div>
+            <iframe src="https://tradingview.com"></iframe>
         </div>
 
-        <!-- 4. 保険 -->
-        <div class="chart-box">
-            <div class="chart-title">保険</div>
-            <div class="sub-title">1618 / TOPIX</div>
-            <div class="btn-group">
-                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
-            </div>
+        <div class="chart-card">
+            <div class="chart-label">その他金融</div>
+            <iframe src="https://tradingview.com"></iframe>
         </div>
 
-        <!-- 5. その他金融 -->
-        <div class="chart-box">
-            <div class="chart-title">その他金融</div>
-            <div class="sub-title">1619 / TOPIX</div>
-            <div class="btn-group">
-                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
-            </div>
+        <div class="chart-card">
+            <div class="chart-label">繊維</div>
+            <iframe src="https://tradingview.com"></iframe>
         </div>
 
-        <!-- 6. 繊維 -->
-        <div class="chart-box">
-            <div class="chart-title">繊維</div>
-            <div class="sub-title">1621 / TOPIX</div>
-            <div class="btn-group">
-                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
-            </div>
+        <div class="chart-card">
+            <div class="chart-label">パルプ紙</div>
+            <iframe src="https://tradingview.com"></iframe>
         </div>
 
-        <!-- 7. パルプ紙 -->
-        <div class="chart-box">
-            <div class="chart-title">パルプ紙</div>
-            <div class="sub-title">1622 / TOPIX</div>
-            <div class="btn-group">
-                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
-            </div>
+        <div class="chart-card">
+            <div class="chart-label">ガラス土石</div>
+            <iframe src="https://tradingview.com"></iframe>
         </div>
 
-        <!-- 8. ガラス土石 -->
-        <div class="chart-box">
-            <div class="chart-title">ガラス土石</div>
-            <div class="sub-title">1624 / TOPIX</div>
-            <div class="btn-group">
-                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
-            </div>
+        <div class="chart-card">
+            <div class="chart-label">鉄鋼</div>
+            <iframe src="https://tradingview.com"></iframe>
         </div>
 
-        <!-- 9. 鉄鋼 -->
-        <div class="chart-box">
-            <div class="chart-title">鉄鋼</div>
-            <div class="sub-title">1626 / TOPIX</div>
-            <div class="btn-group">
-                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
-            </div>
+        <div class="chart-card">
+            <div class="chart-label">非鉄金属</div>
+            <iframe src="https://tradingview.com"></iframe>
         </div>
 
-        <!-- 10. 非鉄金属 -->
-        <div class="chart-box">
-            <div class="chart-title">非鉄金属</div>
-            <div class="sub-title">1627 / TOPIX</div>
-            <div class="btn-group">
-                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
-            </div>
+        <div class="chart-card">
+            <div class="chart-label">金属製品</div>
+            <iframe src="https://tradingview.com"></iframe>
         </div>
 
-        <!-- 11. 金属製品 -->
-        <div class="chart-box">
-            <div class="chart-title">金属製品</div>
-            <div class="sub-title">1628 / TOPIX</div>
-            <div class="btn-group">
-                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
-            </div>
+        <div class="chart-card">
+            <div class="chart-label">鉱業</div>
+            <iframe src="https://tradingview.com"></iframe>
         </div>
 
-        <!-- 12. 鉱業 -->
-        <div class="chart-box">
-            <div class="chart-title">鉱業</div>
-            <div class="sub-title">1611 / TOPIX</div>
-            <div class="btn-group">
-                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
-            </div>
+        <div class="chart-card">
+            <div class="chart-label">石油石炭</div>
+            <iframe src="https://tradingview.com"></iframe>
         </div>
 
-        <!-- 13. 石油石炭 -->
-        <div class="chart-box">
-            <div class="chart-title">石油石炭</div>
-            <div class="sub-title">1612 / TOPIX</div>
-            <div class="btn-group">
-                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
-            </div>
+        <div class="chart-card">
+            <div class="chart-label">卸売</div>
+            <iframe src="https://tradingview.com"></iframe>
         </div>
-
-        <!-- 14. 卸売 -->
-        <div class="chart-box">
-            <div class="chart-title">卸売</div>
-            <div class="sub-title">1629 / TOPIX</div>
-            <div class="btn-group">
-                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
-            </div>
-        </div>
-
     </div>
 
 </body>

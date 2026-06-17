@@ -20,33 +20,55 @@
         }
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            /* スマホで綺麗に並ぶ2列構成 */
+            grid-template-columns: repeat(2, 1fr);
             gap: 8px;
         }
         .chart-box {
             background-color: #1c1c1e;
             border: 1px solid #2c2c2e;
             border-radius: 8px;
-            padding: 5px;
+            padding: 12px 5px;
             text-align: center;
-            height: 200px; /* チャートが収まる高さ */
-            box-sizing: border-box;
+            text-decoration: none;
+            color: #fff;
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            min-height: 75px;
+            box-sizing: border-box;
+        }
+        .chart-box:active {
+            background-color: #3a3a3c;
         }
         .chart-title {
             font-weight: bold;
-            font-size: 12px;
-            color: #00ffcc;
-            margin-bottom: 3px;
+            font-size: 14px;
         }
-        .widget-target {
-            width: 100%;
-            flex-grow: 1;
+        .sub-title {
+            font-size: 10px;
+            color: #8e8e93;
+            margin-top: 3px;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 6px;
+        }
+        .mini-btn {
+            font-size: 10px;
+            padding: 3px 8px;
+            background-color: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 4px;
+            color: #00ffcc; /* 押しやすいように緑色にしました */
+            text-decoration: none;
+            font-weight: bold;
         }
         .base-market {
-            grid-column: 1 / -1;
-            height: 240px;
+            grid-column: span 2;
+            background-color: #1c2030;
             border: 1px solid #2962ff;
         }
         .base-market .chart-title { color: #2962ff; }
@@ -57,60 +79,134 @@
     <h1>TOPIX 業種別相対チャートボード</h1>
 
     <div class="grid-container">
-        <!-- 各セクターの箱（ここに下のプログラムからチャートを注入します） -->
-        <div class="chart-box base-market"><div class="chart-title">📈 TOPIX (日足基準)</div><div id="tv-topix" class="widget-target"></div></div>
-        <div class="chart-box"><div class="chart-title">銀行</div><div id="tv-sec1" class="widget-target"></div></div>
-        <div class="chart-box"><div class="chart-title">証券</div><div id="tv-sec2" class="widget-target"></div></div>
-        <div class="chart-box"><div class="chart-title">保険</div><div id="tv-sec3" class="widget-target"></div></div>
-        <div class="chart-box"><div class="chart-title">その他金融</div><div id="tv-sec4" class="widget-target"></div></div>
-        <div class="chart-box"><div class="chart-title">繊維</div><div id="tv-sec5" class="widget-target"></div></div>
-        <div class="chart-box"><div class="chart-title">パルプ紙</div><div id="tv-sec6" class="widget-target"></div></div>
-        <div class="chart-box"><div class="chart-title">ガラス土石</div><div id="tv-sec7" class="widget-target"></div></div>
-        <div class="chart-box"><div class="chart-title">鉄鋼</div><div id="tv-sec8" class="widget-target"></div></div>
-        <div class="chart-box"><div class="chart-title">非鉄金属</div><div id="tv-sec9" class="widget-target"></div></div>
-        <div class="chart-box"><div class="chart-title">金属製品</div><div id="tv-sec10" class="widget-target"></div></div>
-        <div class="chart-box"><div class="chart-title">鉱業</div><div id="tv-sec11" class="widget-target"></div></div>
-        <div class="chart-box"><div class="chart-title">石油石炭</div><div id="tv-sec12" class="widget-target"></div></div>
-        <div class="chart-box"><div class="chart-title">卸売</div><div id="tv-sec13" class="widget-target"></div></div>
+
+        <!-- 1. 基準：TOPIX -->
+        <div class="chart-box base-market">
+            <div class="chart-title">📈 TOPIX (日足基準)</div>
+            <div class="sub-title">TSE:1305</div>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャートを開く</a>
+            </div>
+        </div>
+
+        <!-- 2. 銀行 -->
+        <div class="chart-box">
+            <div class="chart-title">銀行</div>
+            <div class="sub-title">1615 / TOPIX</div>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
+            </div>
+        </div>
+
+        <!-- 3. 証券 -->
+        <div class="chart-box">
+            <div class="chart-title">証券</div>
+            <div class="sub-title">1617 / TOPIX</div>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
+            </div>
+        </div>
+
+        <!-- 4. 保険 -->
+        <div class="chart-box">
+            <div class="chart-title">保険</div>
+            <div class="sub-title">1618 / TOPIX</div>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
+            </div>
+        </div>
+
+        <!-- 5. その他金融 -->
+        <div class="chart-box">
+            <div class="chart-title">その他金融</div>
+            <div class="sub-title">1619 / TOPIX</div>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
+            </div>
+        </div>
+
+        <!-- 6. 繊維 -->
+        <div class="chart-box">
+            <div class="chart-title">繊維</div>
+            <div class="sub-title">1621 / TOPIX</div>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
+            </div>
+        </div>
+
+        <!-- 7. パルプ紙 -->
+        <div class="chart-box">
+            <div class="chart-title">パルプ紙</div>
+            <div class="sub-title">1622 / TOPIX</div>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
+            </div>
+        </div>
+
+        <!-- 8. ガラス土石 -->
+        <div class="chart-box">
+            <div class="chart-title">ガラス土石</div>
+            <div class="sub-title">1624 / TOPIX</div>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
+            </div>
+        </div>
+
+        <!-- 9. 鉄鋼 -->
+        <div class="chart-box">
+            <div class="chart-title">鉄鋼</div>
+            <div class="sub-title">1626 / TOPIX</div>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
+            </div>
+        </div>
+
+        <!-- 10. 非鉄金属 -->
+        <div class="chart-box">
+            <div class="chart-title">非鉄金属</div>
+            <div class="sub-title">1627 / TOPIX</div>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
+            </div>
+        </div>
+
+        <!-- 11. 金属製品 -->
+        <div class="chart-box">
+            <div class="chart-title">金属製品</div>
+            <div class="sub-title">1628 / TOPIX</div>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
+            </div>
+        </div>
+
+        <!-- 12. 鉱業 -->
+        <div class="chart-box">
+            <div class="chart-title">鉱業</div>
+            <div class="sub-title">1611 / TOPIX</div>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
+            </div>
+        </div>
+
+        <!-- 13. 石油石炭 -->
+        <div class="chart-box">
+            <div class="chart-title">石油石炭</div>
+            <div class="sub-title">1612 / TOPIX</div>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
+            </div>
+        </div>
+
+        <!-- 14. 卸売 -->
+        <div class="chart-box">
+            <div class="chart-title">卸売</div>
+            <div class="sub-title">1629 / TOPIX</div>
+            <div class="btn-group">
+                <a class="mini-btn" href="https://tradingview.com" target="_blank">チャート</a>
+            </div>
+        </div>
+
     </div>
 
-    <!-- チャートを自動生成するパーツ（最新のスマホ・PC両対応版） -->
-    <script type="text/javascript" src="https://tradingview.com"></script>
-    <script type="text/javascript">
-        function loadChart(containerId, symbol) {
-            new TradingView.widget({
-                "autosize": true,
-                "symbol": symbol,
-                "interval": "D",
-                "timezone": "Asia/Tokyo",
-                "theme": "dark",
-                "style": "3", /* エリア（面）チャートで強弱を見やすく */
-                "locale": "ja",
-                "enable_publishing": false,
-                "hide_top_toolbar": true,
-                "hide_legend": true,
-                "save_image": false,
-                "container_id": containerId
-            });
-        }
-
-        // ページ読み込み完了時に一斉にチャートを生成
-        window.onload = function() {
-            loadChart("tv-topix", "TSE:1305");
-            loadChart("tv-sec1", "TSE:1615/TSE:1305");
-            loadChart("tv-sec2", "TSE:1617/TSE:1305");
-            loadChart("tv-sec3", "TSE:1618/TSE:1305");
-            loadChart("tv-sec4", "TSE:1619/TSE:1305");
-            loadChart("tv-sec5", "TSE:1621/TSE:1305");
-            loadChart("tv-sec6", "TSE:1622/TSE:1305");
-            loadChart("tv-sec7", "TSE:1624/TSE:1305");
-            loadChart("tv-sec8", "TSE:1626/TSE:1305");
-            loadChart("tv-sec9", "TSE:1627/TSE:1305");
-            loadChart("tv-sec10", "TSE:1628/TSE:1305");
-            loadChart("tv-sec11", "TSE:1611/TSE:1305");
-            loadChart("tv-sec12", "TSE:1612/TSE:1305");
-            loadChart("tv-sec13", "TSE:1629/TSE:1305");
-        };
-    </script>
 </body>
 </html>

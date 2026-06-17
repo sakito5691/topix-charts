@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOPIX 業種別相対チャートボード</title>
+    <title>TOPIX 相対業種別ランチャー</title>
     <style>
         body {
             background-color: #121212; /* 世界の株価風の黒背景 */
@@ -20,68 +20,136 @@
         }
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            grid-template-columns: repeat(2, 1fr); /* スマホで綺麗に並ぶ2列構成 */
             gap: 8px;
         }
-        .chart-card {
+        .chart-box {
             background-color: #1c1c1e;
-            border-radius: 6px;
-            overflow: hidden;
             border: 1px solid #2c2c2e;
-            height: 240px; /* チャートが綺麗に収まる高さ */
-            padding: 5px;
+            border-radius: 8px;
+            padding: 15px 5px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 80px;
             box-sizing: border-box;
         }
-        .chart-label {
-            font-size: 12px;
-            font-weight: bold;
-            padding: 3px 5px;
-            color: #00ffcc;
-            background: #2a2e39;
-            border-radius: 3px;
-            margin-bottom: 5px;
-            text-align: center;
+        /* スマホでタップした時に一瞬色が変わる設定 */
+        .chart-box:active {
+            background-color: #3a3a3c;
         }
+        .chart-title {
+            font-weight: bold;
+            font-size: 14px;
+            color: #00ffcc; /* セクター名を明るい緑にして見やすく */
+        }
+        .sub-title {
+            font-size: 10px;
+            color: #8e8e93;
+            margin-top: 4px;
+        }
+        /* 基準となるTOPIXだけ最上部に大きく配置 */
         .base-market {
-            grid-column: 1 / -1; /* 最上部のTOPIX本体だけ横幅いっぱいに表示 */
-            height: 280px;
+            grid-column: span 2;
+            background-color: #1c2030;
             border: 1px solid #2962ff;
         }
-        .base-market .chart-label { color: #2962ff; }
-        iframe {
-            width: 100%;
-            height: calc(100% - 25px);
-            border: none;
-            background-color: #ffffff; /* チャートを見やすくするため背景を白に */
-            border-radius: 4px;
-        }
+        .base-market .chart-title { color: #2962ff; }
     </style>
 </head>
 <body>
 
-    <h1>TOPIX 業種別相対チャート</h1>
+    <h1>TOPIX 業種別相対チャートボード</h1>
 
     <div class="grid-container">
-        <!-- 【基準】TOPIX単体（最上部） -->
-        <div class="chart-card base-market">
-            <div class="chart-label">📈 TOPIX (日足基準)</div>
-            <iframe src="https://infocast.co.jp"></iframe>
-        </div>
-        
-        <!-- 13セクターのチャート一覧（3ヶ月間の日足チャートが自動で並びます） -->
-        <div class="chart-card"><div class="chart-label">銀行</div><iframe src="https://infocast.co.jp"></iframe></div>
-        <div class="chart-card"><div class="chart-label">証券</div><iframe src="https://infocast.co.jp"></iframe></div>
-        <div class="chart-card"><div class="chart-label">保険</div><iframe src="https://infocast.co.jp"></iframe></div>
-        <div class="chart-card"><div class="chart-label">その他金融</div><iframe src="https://infocast.co.jp"></iframe></div>
-        <div class="chart-card"><div class="chart-label">繊維</div><iframe src="https://infocast.co.jp"></iframe></div>
-        <div class="chart-card"><div class="chart-label">パルプ紙</div><iframe src="https://infocast.co.jp"></iframe></div>
-        <div class="chart-card"><div class="chart-label">ガラス土石</div><iframe src="https://infocast.co.jp"></iframe></div>
-        <div class="chart-card"><div class="chart-label">鉄鋼</div><iframe src="https://infocast.co.jp"></iframe></div>
-        <div class="chart-card"><div class="chart-label">非鉄金属</div><iframe src="https://infocast.co.jp"></iframe></div>
-        <div class="chart-card"><div class="chart-label">金属製品</div><iframe src="https://infocast.co.jp"></iframe></div>
-        <div class="chart-card"><div class="chart-label">鉱業</div><iframe src="https://infocast.co.jp"></iframe></div>
-        <div class="chart-card"><div class="chart-label">石油石炭</div><iframe src="https://infocast.co.jp"></iframe></div>
-        <div class="chart-card"><div class="chart-label">卸売</div><iframe src="https://infocast.co.jp"></iframe></div>
+
+        <!-- 1. 基準：TOPIX -->
+        <a class="chart-box base-market" href="https://tradingview.com" target="_blank">
+            <div class="chart-title">📈 TOPIX (日足基準)</div>
+            <div class="sub-title">TSE:1305</div>
+        </a>
+
+        <!-- 2. 銀行 -->
+        <a class="chart-box" href="https://tradingview.com" target="_blank">
+            <div class="chart-title">銀行</div>
+            <div class="sub-title">1615 / TOPIX</div>
+        </a>
+
+        <!-- 3. 証券 -->
+        <a class="chart-box" href="https://tradingview.com" target="_blank">
+            <div class="chart-title">証券</div>
+            <div class="sub-title">1617 / TOPIX</div>
+        </a>
+
+        <!-- 4. 保険 -->
+        <a class="chart-box" href="https://tradingview.com" target="_blank">
+            <div class="chart-title">保険</div>
+            <div class="sub-title">1618 / TOPIX</div>
+        </a>
+
+        <!-- 5. その他金融 -->
+        <a class="chart-box" href="https://tradingview.com" target="_blank">
+            <div class="chart-title">その他金融</div>
+            <div class="sub-title">1619 / TOPIX</div>
+        </a>
+
+        <!-- 6. 繊維 -->
+        <a class="chart-box" href="https://tradingview.com" target="_blank">
+            <div class="chart-title">繊維</div>
+            <div class="sub-title">1621 / TOPIX</div>
+        </a>
+
+        <!-- 7. パルプ紙 -->
+        <a class="chart-box" href="https://tradingview.com" target="_blank">
+            <div class="chart-title">パルプ紙</div>
+            <div class="sub-title">1622 / TOPIX</div>
+        </a>
+
+        <!-- 8. ガラス土石 -->
+        <a class="chart-box" href="https://tradingview.com" target="_blank">
+            <div class="chart-title">ガラス土石</div>
+            <div class="sub-title">1624 / TOPIX</div>
+        </a>
+
+        <!-- 9. 鉄鋼 -->
+        <a class="chart-box" href="https://tradingview.com" target="_blank">
+            <div class="chart-title">鉄鋼</div>
+            <div class="sub-title">1626 / TOPIX</div>
+        </a>
+
+        <!-- 10. 非鉄金属 -->
+        <a class="chart-box" href="https://tradingview.com" target="_blank">
+            <div class="chart-title">非鉄金属</div>
+            <div class="sub-title">1627 / TOPIX</div>
+        </a>
+
+        <!-- 11. 金属製品 -->
+        <a class="chart-box" href="https://tradingview.com" target="_blank">
+            <div class="chart-title">金属製品</div>
+            <div class="sub-title">1628 / TOPIX</div>
+        </a>
+
+        <!-- 12. 鉱業 -->
+        <a class="chart-box" href="https://tradingview.com" target="_blank">
+            <div class="chart-title">鉱業</div>
+            <div class="sub-title">1611 / TOPIX</div>
+        </a>
+
+        <!-- 13. 石油石炭 -->
+        <a class="chart-box" href="https://tradingview.com" target="_blank">
+            <div class="chart-title">石油石炭</div>
+            <div class="sub-title">1612 / TOPIX</div>
+        </a>
+
+        <!-- 14. 卸売 -->
+        <a class="chart-box" href="https://tradingview.com" target="_blank">
+            <div class="chart-title">卸売</div>
+            <div class="sub-title">1629 / TOPIX</div>
+        </a>
+
     </div>
 
 </body>

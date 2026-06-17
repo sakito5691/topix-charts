@@ -3,94 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TOPIX 業種別相対チャートボード</title>
+    <title>TOPIX 業種別相対チャート</title>
     <style>
-        body {
-            background-color: #131722;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-            margin: 0;
-            padding: 10px;
-        }
-        h1 {
-            font-size: 18px;
-            text-align: center;
-            margin: 10px 0;
-            color: #2962ff;
-        }
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-            gap: 8px;
-        }
-        .chart-card {
-            background-color: #1c2030;
-            border-radius: 6px;
-            overflow: hidden;
-            border: 1px solid #2a2e39;
-            height: 180px;
-        }
-        .base-market {
-            grid-column: 1 / -1;
-            height: 220px;
-            border: 1px solid #2962ff;
-        }
+        body { background-color: #131722; color: #ffffff; font-family: sans-serif; margin: 0; padding: 10px; }
+        h1 { font-size: 18px; text-align: center; color: #2962ff; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 8px; }
+        .chart-card { background-color: #1c2030; border-radius: 6px; padding: 5px; text-align: center; }
+        .chart-label { font-size: 12px; color: #00ffcc; margin-bottom: 5px; }
+        .chart-img { width: 100%; height: auto; border-radius: 4px; }
     </style>
 </head>
 <body>
-
     <h1>TOPIX 業種別相対チャート</h1>
-
     <div class="grid-container">
-        <div class="chart-card base-market"><div id="tv-topix" style="height:100%;width:100%"></div></div>
-        <div class="chart-card"><div id="tv-sec1" style="height:100%;width:100%"></div></div>
-        <div class="chart-card"><div id="tv-sec2" style="height:100%;width:100%"></div></div>
-        <div class="chart-card"><div id="tv-sec3" style="height:100%;width:100%"></div></div>
-        <div class="chart-card"><div id="tv-sec4" style="height:100%;width:100%"></div></div>
-        <div class="chart-card"><div id="tv-sec5" style="height:100%;width:100%"></div></div>
-        <div class="chart-card"><div id="tv-sec6" style="height:100%;width:100%"></div></div>
-        <div class="chart-card"><div id="tv-sec7" style="height:100%;width:100%"></div></div>
-        <div class="chart-card"><div id="tv-sec8" style="height:100%;width:100%"></div></div>
-        <div class="chart-card"><div id="tv-sec9" style="height:100%;width:100%"></div></div>
-        <div class="chart-card"><div id="tv-sec10" style="height:100%;width:100%"></div></div>
-        <div class="chart-card"><div id="tv-sec11" style="height:100%;width:100%"></div></div>
-        <div class="chart-card"><div id="tv-sec12" style="height:100%;width:100%"></div></div>
-        <div class="chart-card"><div id="tv-sec13" style="height:100%;width:100%"></div></div>
+        <!-- チャート画像URLを直接埋め込み -->
+        <div class="chart-card"><div class="chart-label">銀行</div><img class="chart-img" src="https://tradingview.com"></div>
+        <div class="chart-card"><div class="chart-label">証券</div><img class="chart-img" src="https://tradingview.com"></div>
+        <!-- 他のセクターも同様に設定可能 -->
     </div>
-
-    <script type="text/javascript" src="https://tradingview.com"></script>
-    <script type="text/javascript">
-        function createChart(containerId, symbol) {
-            new TradingView.widget({
-                "autosize": true,
-                "symbol": symbol,
-                "interval": "D",
-                "timezone": "Asia/Tokyo",
-                "theme": "dark",
-                "style": "3",
-                "locale": "ja",
-                "enable_publishing": false,
-                "hide_top_toolbar": true,
-                "hide_legend": false,
-                "save_image": false,
-                "container_id": containerId
-            });
-        }
-
-        createChart("tv-topix", "TSE:1305");
-        createChart("tv-sec1", "TSE:1615/TSE:1305"); // 銀行
-        createChart("tv-sec2", "TSE:1617/TSE:1305"); // 証券
-        createChart("tv-sec3", "TSE:1618/TSE:1305"); // 保険
-        createChart("tv-sec4", "TSE:1619/TSE:1305"); // その他金融
-        createChart("tv-sec5", "TSE:1621/TSE:1305"); // 繊維
-        createChart("tv-sec6", "TSE:1622/TSE:1305"); // パルプ紙
-        createChart("tv-sec7", "TSE:1624/TSE:1305"); // ガラス土石
-        createChart("tv-sec8", "TSE:1626/TSE:1305"); // 鉄鋼
-        createChart("tv-sec9", "TSE:1627/TSE:1305"); // 非鉄金属
-        createChart("tv-sec10", "TSE:1628/TSE:1305"); // 金属製品
-        createChart("tv-sec11", "TSE:1611/TSE:1305"); // 鉱業
-        createChart("tv-sec12", "TSE:1612/TSE:1305"); // 石油石炭
-        createChart("tv-sec13", "TSE:1629/TSE:1305"); // 卸売
-    </script>
 </body>
 </html>
